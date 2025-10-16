@@ -37,7 +37,7 @@ for feat in feature_list:
 
 app = Flask(__name__)
 app.config['TEMPLATES_AUTO_RELOAD'] = True
-print("[feature-dev1] app starting - dev1 changes")
+print("[feature-dev2] app starting - dev2 changes")
 
 @app.route("/", methods=["GET"])
 def index():
@@ -77,11 +77,11 @@ def predict():
     return render_template("result.html", prediction=pred_fmt)
 
 
-# Developer 1 added route
-@app.route("/dev1", methods=["GET"]) 
-def dev1():
-    print("Dev1 route hit")
-    return "Hello from dev1"
+# Developer 2 added route
+@app.route("/dev2", methods=["GET"]) 
+def dev2():
+    print("Dev2 route hit")
+    return "Hello from dev2"
 
 # Optional JSON API
 @app.route("/api/predict", methods=["POST"])
