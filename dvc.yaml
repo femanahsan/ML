@@ -9,7 +9,7 @@ stages:
   features:
     cmd: python src/features.py --in_csv data/iris.csv --out_dir data --test_size ${features.test_size} --random_state ${features.random_state}
     deps:
-      - data/iris_dataset.csv
+      - data/iris.csv
       - src/features.py
     outs:
       - data/X_train.npy
@@ -21,22 +21,22 @@ stages:
       - features.random_state
 
   train:
-    cmd: python src/train.py --data_dir data --model_out model.pkl
+    cmd: python src/train.py --data_dir data --model_out models/model.pkl
     deps:
       - data/X_train.npy
       - data/y_train.npy
       - src/train.py
     outs:
-      - model.pkl
+      - models/model.pkl
     params:
       - train.n_estimators
       - train.max_depth
       - train.random_state
 
   evaluate:
-    cmd: python src/evaluate.py --data_dir data --model model.pkl --out metrics/eval.json
+    cmd: python src/evaluate.py --data_dir data --model models/model.pkl --out metrics/eval.json
     deps:
-      - model.pkl
+      - models/model.pkl
       - data/X_test.npy
       - data/y_test.npy
       - src/evaluate.py
