@@ -37,7 +37,7 @@ for feat in feature_list:
 
 app = Flask(__name__)
 app.config['TEMPLATES_AUTO_RELOAD'] = True
-print("[branch-a] app starting - change from branch-a")
+print("[merged] app starting - contributions: branch-a, branch-b")
 
 @app.route("/", methods=["GET"])
 def index():
